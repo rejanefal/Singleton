@@ -16,21 +16,17 @@ public class ValidadorCPF {
     
     private static ArrayList<ValidadorCPF> listaInstancia = new ArrayList<ValidadorCPF>();
     private static int cont;
-    private static final int qtdInstanciasPermitidas = 2;
+    private static  int qtdInstanciasPermitidas;
     
     private ValidadorCPF(){
         
     }
     
+    public static void setQtdInstanciasPermitidas(int num){
+        qtdInstanciasPermitidas = num;
+    }
+    
     public static ValidadorCPF getInstance(){
-        /*if(cont%2 == 0)
-            if(listaInstancia.get(0) == null)
-                listaInstancia[0]= new ValidadorCPF();
-            
-        else
-            listaInstancia[1]= new ValidadorCPF();
-          
-        cont++; */
         if (listaInstancia.size() < qtdInstanciasPermitidas)
             listaInstancia.add(new ValidadorCPF());
         
@@ -39,9 +35,7 @@ public class ValidadorCPF {
         return listaInstancia.get(cont++);
     }
     
-    //public boolean validacPF(String cpf){
-    //public static boolean iscpf(String cpf) {
-    public boolean validacPF(String cpf){    
+        public boolean validacPF(String cpf){    
     // considera-se erro cpf's formados por uma sequencia de numeros iguais
         if (cpf.equals("00000000000") || cpf.equals("11111111111") ||
             cpf.equals("22222222222") || cpf.equals("33333333333") ||
